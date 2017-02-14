@@ -25,6 +25,19 @@ public class WebCrawler {
         return labels;
     }
 
+    public static ArrayList<String> crawl(Document doc) throws IOException {
+        /*
+        Crawl through a given URL to cache the data from a website
+
+        doc : web
+
+        return : ArrayList of tag address with content
+         */
+        ArrayList<String> labels = new ArrayList<String>();
+        traverse(doc.children(), labels, doc.nodeName());
+        return labels;
+    }
+
     private static void traverse(Elements elements, ArrayList<String> labels, String parent){
         /*
         Recursively traverse through the tree and create an address -> content array for each html tag
@@ -48,5 +61,9 @@ public class WebCrawler {
                 traverse(element.children(), labels, parent);
             }
         }
+    }
+
+    public static Document getWebDocument(String url) throws IOException {
+        return Jsoup.connect(url).get();
     }
 }

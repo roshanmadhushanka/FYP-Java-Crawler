@@ -13,7 +13,7 @@ public class FileHandler {
 
         path : location of the file
 
-        return : String file contetn
+        return : String file content
          */
 
         // Open file to read
@@ -35,7 +35,7 @@ public class FileHandler {
         Write String to a file
 
         data : String data
-        path : location where to written
+        path : location where to be written
 
         return : null
          */
@@ -51,8 +51,27 @@ public class FileHandler {
         writer.close();
     }
 
-    public void write(ArrayList<String> data, String path){
+    public void write(ArrayList<String> data, String path) throws IOException {
+        /*
+        Write string array list to file
 
+        data : ArrayList of string data
+        path : location where to be written
+
+        return : null
+         */
+
+        // Create file to write
+        File file = new File(path);
+        file.createNewFile();
+
+        // Perform file write operation
+        FileWriter writer = new FileWriter(file);
+        for(String line: data){
+            writer.write(line + "\n");
+        }
+        writer.flush();
+        writer.close();
     }
 
 
