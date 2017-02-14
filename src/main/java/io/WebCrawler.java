@@ -16,6 +16,8 @@ public class WebCrawler {
         Crawl through a given URL to cache the data from a website
 
         url : web address that needs to crawl
+
+        return : ArrayList of tag address with content
          */
         Document doc = Jsoup.connect(url).get();
         ArrayList<String> labels = new ArrayList<String>();
@@ -31,6 +33,8 @@ public class WebCrawler {
         elements : tags inside a particular tag
         labels   : list of address and content mapping
         parent   : maintain the address for each recursive call
+
+        return : null
          */
         int id = 0;
         String label;
